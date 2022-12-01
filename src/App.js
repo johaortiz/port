@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import Home from "./pages/Home/Home";
+import SideBar from "./components/SideBar/SideBar";
+import ButtonTheme from "./components/ButtonTheme/ButtonTheme";
+import { Box, createTheme, ThemeProvider } from "@mui/material";
+import bgd from "./assets/bgd.png";
+
+const obj = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100vh",
+  bgcolor: "background.default",
+  color: "text.primary",
+};
 
 function App() {
+  const contextTheme = useSelector((state) => state.theme.theme);
+
+  const theme = createTheme({
+    palette: {
+      mode: contextTheme,
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <>
+        <Box margin={5}>
+          <SideBar />
+        </Box>
+        <Box
+          component="main"
+          sx={{
+            ...obj,
+            width: "75vw",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <ButtonTheme />
+          <Home />
+        </Box>
+      </>
+    </ThemeProvider>
   );
 }
 
