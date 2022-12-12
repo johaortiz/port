@@ -1,9 +1,13 @@
+import { Route, Routes } from "react-router-dom";
+import { Box, createTheme, ThemeProvider } from "@mui/material";
 import { useSelector } from "react-redux";
-import Home from "./pages/Home/Home";
 import SideBar from "./components/SideBar/SideBar";
 import ButtonTheme from "./components/ButtonTheme/ButtonTheme";
-import { Box, createTheme, ThemeProvider } from "@mui/material";
+import Home from "./pages/Home/Home";
+import About from './pages/About/About'
 import bgd from "./assets/bgd.png";
+import Experiencie from "./pages/Experience/Experiencie";
+import Contact from "./pages/Contact/Contact";
 
 const obj = {
   display: "flex",
@@ -27,7 +31,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <>
         <Box margin={5}>
-          <SideBar />
+          <SideBar contextTheme={contextTheme} />
         </Box>
         <Box
           component="main"
@@ -37,7 +41,13 @@ function App() {
           }}
         >
           <ButtonTheme />
-          <Home />
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/about' element={<About />} />
+            <Route exact path='/experience' element={<Experiencie />} />
+            <Route exact path='/contact' element={<Contact />} />
+            <Route exact path='*' element={<>Not Found</>} />
+          </Routes>
         </Box>
       </>
     </ThemeProvider>

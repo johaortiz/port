@@ -7,6 +7,7 @@ import img from "../../assets/tristana-1.jpg";
 function Home() {
     const el0 = useRef(null);
     const el1 = useRef(null);
+
     useEffect(() => {
         const string0 = ["Hello, I'm <strong>Joaquín Ortiz</strong>",
             "I'm a <strong>Full Stack Web Developer</strong>"]
@@ -41,12 +42,10 @@ function Home() {
     }, []);
 
 
-
     return (
         <>
             <Box
                 width="80vw"
-                height="50vh"
                 justifyContent="initial"
                 alignItems="initial"
                 margin="5% 0 0 2.2%"
@@ -54,7 +53,6 @@ function Home() {
                 <p style={{ margin: '9px 0 0 9px', fontSize: '2.2rem' }} ref={el0}></p>
                 <br />
                 <p style={{ margin: '9px 0 0 9px', fontSize: '2.2rem' }} ref={el1}></p>
-                {/* <Typography><h1>testh1</h1></Typography> */}
             </Box >
         </>
     );
